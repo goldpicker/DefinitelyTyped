@@ -1,6 +1,7 @@
 // Type definitions for SlickGrid 2.1.0
 // Project: https://github.com/mleibman/SlickGrid
 // Definitions by: Josh Baldwin <https://github.com/jbaldwin>
+// Definitions by: goldpicker <https://github.com/goldpicker>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.3
 
@@ -32,7 +33,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 /// <reference types="jquery" />
 
-interface DOMEvent extends Event {}
+interface DOMEvent extends Event { }
 
 declare namespace Slick {
 
@@ -125,7 +126,7 @@ declare namespace Slick {
 	}
 
 	// todo: is this private? there are no comments in the code
-	export class EventHandler <T = any> {
+	export class EventHandler<T = any> {
 		constructor();
 
 		public subscribe(event: Event<T>, handler: (e: EventData, data: T) => void): EventHandler;
@@ -402,7 +403,7 @@ declare namespace Slick {
 		* @param colDef
 		* @return
 		**/
-		asyncPostRender?: (cellNode:any, row:any, dataContext:any, colDef:any) => void;
+		asyncPostRender?: (cellNode: any, row: any, dataContext: any, colDef: any) => void;
 
 		/**
 		* Used by the the slick.rowMoveManager.js plugin for moving rows. Has no effect without the plugin installed.
@@ -692,32 +693,32 @@ declare namespace Slick {
 		topPanelHeight?: number;
 
 
-        addNewRowCssClass?: string;
-        alwaysAllowHorizontalScroll?: boolean;
-        alwaysShowVerticalScroll?: boolean;
-        asyncPostRenderCleanupDelay?: number;
-        createFooterRow?: boolean;
-        createPreHeaderPanel?: boolean;
-        doPaging?: boolean;
-        editorCellNavOnLRKeys?: boolean;
-        emulatePagingWhenScrolling?: boolean;
-        enableAsyncPostRenderCleanup?: boolean;
-        footerRowHeight?: number;
-        frozenBottom?: boolean;
-        frozenColumn?: number;
-        frozenRow?: number;
-        minRowBuffer?: number;
-        numberedMultiColumnSort?: boolean;
-        preHeaderPanelHeight?: number;
-        preserveCopiedSelectionOnPaste?: boolean;
-        showCellSelection?: boolean;
-        showFooterRow?: boolean;
-        showPreHeaderPanel?: boolean;
-        showTopPanel?: boolean;
-        sortColNumberInSeparateSpan?: boolean;
-        suppressActiveCellChangeOnEdit?: boolean;
-        tristateMultiColumnSort?: boolean;
-        viewportClass?: string;
+		addNewRowCssClass?: string;
+		alwaysAllowHorizontalScroll?: boolean;
+		alwaysShowVerticalScroll?: boolean;
+		asyncPostRenderCleanupDelay?: number;
+		createFooterRow?: boolean;
+		createPreHeaderPanel?: boolean;
+		doPaging?: boolean;
+		editorCellNavOnLRKeys?: boolean;
+		emulatePagingWhenScrolling?: boolean;
+		enableAsyncPostRenderCleanup?: boolean;
+		footerRowHeight?: number;
+		frozenBottom?: boolean;
+		frozenColumn?: number;
+		frozenRow?: number;
+		minRowBuffer?: number;
+		numberedMultiColumnSort?: boolean;
+		preHeaderPanelHeight?: number;
+		preserveCopiedSelectionOnPaste?: boolean;
+		showCellSelection?: boolean;
+		showFooterRow?: boolean;
+		showPreHeaderPanel?: boolean;
+		showTopPanel?: boolean;
+		sortColNumberInSeparateSpan?: boolean;
+		suppressActiveCellChangeOnEdit?: boolean;
+		tristateMultiColumnSort?: boolean;
+		viewportClass?: string;
 	}
 
 	export interface DataProvider<T extends SlickData> {
@@ -793,12 +794,12 @@ declare namespace Slick {
 		/**
 		 * A custom cell editor.
 		 */
-		editor?: Slick.Editors.Editor<T>;
+		editor?: any;//Slick.Editors.Editor<T>;
 
 		/**
 		 * Number of columns this cell will span. Can also contain "*" to indicate that the cell should span the rest of the row.
 		 */
-		colspan?: number|string;
+		colspan?: number | string;
 	}
 
 	/**
@@ -832,8 +833,8 @@ declare namespace Slick {
 		* @param options Additional options.  See Grid Options for a list of options that can be included.
 		**/
 		constructor(
-			container: string|HTMLElement|JQuery,
-			data: T[]|DataProvider<T>,
+			container: string | HTMLElement | JQuery,
+			data: T[] | DataProvider<T>,
 			columns: Column<T>[],
 			options: GridOptions<T>);
 
@@ -1280,7 +1281,7 @@ declare namespace Slick {
 		// #region Editors
 
 		public getEditorLock(): EditorLock<any>;
-		public getEditController(): { commitCurrentEdit():boolean; cancelCurrentEdit():boolean; };
+		public getEditController(): { commitCurrentEdit(): boolean; cancelCurrentEdit(): boolean; };
 
 		// #endregion Editors
 	}
@@ -1572,7 +1573,7 @@ declare namespace Slick {
 	}
 
 	export interface Formatter<T extends SlickData> {
-        (row: number, cell: number, value: any, columnDef: Column<T>, dataContext: SlickData): string;
+		(row: number, cell: number, value: any, columnDef: Column<T>, dataContext: SlickData): string;
 	}
 
 	export module Formatters {
@@ -1603,7 +1604,7 @@ declare namespace Slick {
 			public getPagingInfo(): PagingOptions;
 			public getItems(): T[];
 			public setItems(data: T[], objectIdProperty?: string): void;
-			public setFilter(filterFn: (item: T, args:any) => boolean): void;	// todo: typeof(args)
+			public setFilter(filterFn: (item: T, args: any) => boolean): void;	// todo: typeof(args)
 			public sort(comparer: Function, ascending: boolean): void;		// todo: typeof(comparer), should be the same callback as Array.sort
 			public fastSort(field: string, ascending: boolean): void;
 			public fastSort(field: Function, ascending: boolean): void;		// todo: typeof(field), should be the same callback as Array.sort
@@ -1614,12 +1615,12 @@ declare namespace Slick {
 			/**
 			* @deprecated
 			**/
-			public groupBy(valueGetter:any, valueFormatter:any, sortComparer:any): void;
+			public groupBy(valueGetter: any, valueFormatter: any, sortComparer: any): void;
 
 			/**
 			* @deprecated
 			**/
-			public setAggregators(groupAggregators:any, includeCollapsed:any): void;
+			public setAggregators(groupAggregators: any, includeCollapsed: any): void;
 
 			/**
 			* @param level Optional level to collapse.  If not specified, applies to all levels.
